@@ -1,3 +1,10 @@
+/*
+*   Created by Andrew Van Hoveln
+*   Implementation of a hash-table / hash map in C++
+*   Hash table uses seprate chaining to handle collisions
+*/
+
+//Header file defining hash table class
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 

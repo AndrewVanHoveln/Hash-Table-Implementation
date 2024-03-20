@@ -1,3 +1,9 @@
+/*
+*   Created by Andrew Van Hoveln
+*/
+
+// Main file used to test the hash table
+
 #include <iostream>
 #include "HashTable.h"
 #include <random>

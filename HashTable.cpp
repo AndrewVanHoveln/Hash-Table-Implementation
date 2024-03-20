@@ -1,3 +1,9 @@
+/*
+*   Created by Andrew Van Hoveln
+*/
+
+//Implementation of hash table methods
+
 #include "HashTable.h"
 #include <vector>
 
