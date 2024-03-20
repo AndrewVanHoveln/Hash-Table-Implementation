@@ -9,16 +9,17 @@
 
 using namespace std;
 
-
+// constructor
 template <typename T, typename U>
 HashTable<T, U>::HashTable(){
     this->size = 0;
     this->index = 0;
     this->capacity = this->tableSizes[this->index];
     this->table = vector<vector<Entry*>>(capacity);
-    this->max_2d = capacity / 8;
+    this->max_2d = capacity / 8;    // arbitrary value saying once any chain fills up more than 1/8 total capacity then we need to rehash
 }
 
+// Destructor
 template <typename T, typename U>
 HashTable<T, U>::~HashTable(){
     for(int i = 0; i < table.size(); i++){
@@ -31,6 +32,7 @@ HashTable<T, U>::~HashTable(){
     }
 }
 
+// index the hash table creates the entry if it does not already exist
 template <typename T, typename U>
 U& HashTable<T, U>::operator[](const T& key){
     size_t i = hash(key);
@@ -54,6 +56,7 @@ U& HashTable<T, U>::operator[](const T& key){
     return e->value;
 }
 
+// insert a key value pair into the table
 template <typename T, typename U>
 void HashTable<T, U>::insert(const T& key, const U& value){
     size_t i = hash(key);
@@ -76,6 +79,7 @@ void HashTable<T, U>::insert(const T& key, const U& value){
     }
 }
 
+// print out the table contents
 template <typename T, typename U>
 void HashTable<T, U>::printTable(){
     for (int i = 0; i < table.size(); i++){
@@ -88,6 +92,7 @@ void HashTable<T, U>::printTable(){
     }
 }
 
+// move contents into a larger hash table to create fewer collisions
 template <typename T, typename U>
 void HashTable<T, U>::rehash(){
     if(index + 1 > tableSizes.size())
@@ -107,6 +112,7 @@ void HashTable<T, U>::rehash(){
     }
 }
 
+// private insert used to rehash without allocating and deallocating memory
 template <typename T, typename U>
 void HashTable<T, U>::insert(Entry* e){
     size_t i = hash(e->key);
